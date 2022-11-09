@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- metadata -->
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+        <!-- title and favicon -->
+        <title>Web App</title>
+        <link rel="icon" type="image/x-icon" href="assets/alchemy-favicon.png" />
+
+        <!-- js -->
+        <script
+            defer
+            src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@1.35.7/dist/umd/supabase.min.js"
+        ></script>
+        <!-- goes before this one: -->
+        <script type="module" src="app.js"></script>
+
+        <!-- fonts -->
+        <!-- see https://fonts.google.com/ -->
+
+        <!-- css -->
+        <!-- <link rel="stylesheet" href="styles/reset.css" /> -->
+        <link rel="stylesheet" href="styles/global.css" />
+        <link rel="stylesheet" href="styles/style.css" />
+        <!-- add link for page specific css -->
+    </head>
+
+    <body>
+        <header>
+            <img class="logo" src="assets/th.webp" alt="logo" />
+            <h1>Countries of the World</h1>
+        </header>
+
+        <main>
+            <section class="search">
+                <h2>Search Countries by Continent</h2>
+                <form id="search-form">
+                    <label for="continent-select">Select a Continent: </label>
+                    <select id="continent-select" name="continent">
+                        <option value="">All continents</option>
+                    </select>
+                    <button type="submit" aria-label="submit-search">🔍</button>
+                </form>
+            </section>
+
+            <ul class="list" id="country-list" aria-live="polite"></ul>
+        </main>
+    </body>
+</html>

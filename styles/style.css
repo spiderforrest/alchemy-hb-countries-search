@@ -1,0 +1,55 @@
+main {
+    display: grid;
+    grid-template-rows: auto 1fr;
+    gap: 20px;
+}
+
+.search {
+    display: flex;
+    justify-content: space-between;
+}
+
+form {
+    display: flex;
+}
+
+input,
+select {
+    height: 40px;
+    width: 175px;
+    padding: 0 5px;
+    font-size: 1.1em;
+}
+
+button {
+    height: 40px;
+    width: 40px;
+}
+
+.list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-auto-rows: 225px;
+    gap: 10px;
+}
+
+.card {
+    background: white;
+    border: 1px solid lightgrey;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 25px 50px 0 rgba(0, 0, 0, 0.1);
+
+    padding: 10px;
+    text-align: center;
+
+    display: grid;
+    align-content: space-between;
+    justify-items: center;
+}
+
+.card img {
+    width: 72px;
+}
+
+.card h2 {
+    font-size: 1.1em;
+}
