@@ -1,5 +1,6 @@
 /* Imports */
 // Slice A: import getCountries from fetch-utils.js
+import { getCountries } from './fetch-utils.js';
 // Slice B: import getContinents from fetch-utils.js
 
 import { renderContinentOption, renderCountry } from './render-utils.js';
@@ -24,10 +25,16 @@ window.addEventListener('load', async () => {
 
 async function findCountries(continent) {
     // Slice A: call the asynchronous fetch function to get the countries
+    const rawCountries = await getCountries(continent);
     // Slice C: add continent argument to getCountries function call
     // console log the response object to see all of the nested information returned
+    console.log(rawCountries);
     // Slice A: set the countries state to the response.data
+    if (rawCountries.error) return;
+    countries = rawCountries.data;
     // Slice A: call displayCountries function;
+    displayCountries();
+    console.log(countries);
 }
 
 searchForm.addEventListener('submit', (e) => {
@@ -39,9 +46,11 @@ searchForm.addEventListener('submit', (e) => {
 /* Display Functions */
 function displayCountries() {
     //Slice A: reset the countries List
+    countryList.textContent = '';
 
-    for (const country of countries) {
+    for (const item of countries) {
         // Slice A: Call imported render countries function and append to list
+        countryList.append(renderCountry(item));
     }
 }
 
