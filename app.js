@@ -16,50 +16,48 @@ let continents = [];
 
 /* Events */
 window.addEventListener('load', async () => {
-    // call findCountries function with no arguments to fetch all countries (Slice A);
+    // on page load load all countries(well, 100 of them)
     findCountries();
-    // Slice B: call asynchronous getContinents fetch function and set to response variable
+    // fetch the continents
     const response = await getContinents();
-    // Slice B: set the continents state to the response.data
+    // catch for if backend does a bad
     if (response.error) return;
+    // populate the dropdown
     continents = response.data;
-    // Slice B: call displayContinentOptions function;
     displayContinentOptions();
 });
 
 async function findCountries(continent) {
-    // Slice A: call the asynchronous fetch function to get the countries
+    // fetch countries
     const rawCountries = await getCountries(continent);
-    // Slice C: add continent argument to getCountries function call
-    // console log the response object to see all of the nested information returned
-    // Slice A: set the countries state to the response.data
+    // catch
     if (rawCountries.error) return;
+    // display list
     countries = rawCountries.data;
-    // Slice A: call displayCountries function;
     displayCountries();
 }
 
 searchForm.addEventListener('submit', (e) => {
+    // don't query for the continent "All continents"
     e.preventDefault();
+    // fetch countries with continent filter
     const formData = new FormData(searchForm);
-    // Slice C: Call findCountries with continent from formData
     findCountries(formData.get('continent'));
 });
 
 /* Display Functions */
 function displayCountries() {
-    //Slice A: reset the countries List
+    // reset
     countryList.textContent = '';
-
+    // iterate country array generating and appending dom elements
     for (const item of countries) {
-        // Slice A: Call imported render countries function and append to list
         countryList.append(renderCountry(item));
     }
 }
 
 function displayContinentOptions() {
+    // iterate continent array genreating and appending <li>s
     for (const item of continents) {
-        // Slice B: Call continent render function and append to continent selector
         continentSelect.append(renderContinentOption(item));
     }
 }
